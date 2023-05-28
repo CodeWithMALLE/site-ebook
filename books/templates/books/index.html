@@ -1,0 +1,10 @@
+{% extends "common/base.html" %}
+
+{% block contenu %}
+    {% for produit in produits %}
+        <h2>{{ produit.name }}</h2>
+        <img style="width: 200px; height: auto; object-fit: cover" src="{% if produit.img.url %}{{ produit.img.url }}{% endif %}" alt=
+                "{{ produit.name }}">
+        <a href="{% url 'detail-produit' produit.slug %}">Voir les details</a>
+    {% endfor %}
+{% endblock %}

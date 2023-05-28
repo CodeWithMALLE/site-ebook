@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>La librairie de CodeANGEL</title>
+</head>
+<body>
+<a href="{% url 'index' %}">
+    <h1>La librairie de codeangel</h1>
+</a>
+{% if user.is_authenticated %}
+    {{ user.username }}
+    <a href="{% url 'logout' %}">Déconnecter</a>
+{% else %}
+    <a href="{% url 'login' %}">Se connecter</a>
+    <a href="{% url 'signup' %}">S'inscrire</a>
+{% endif %}
+
+{% if user.panier %}
+    <p><a href="{% url 'panier' %}">Voir le panier ({{ user.panier.articles.count }})</a></p>
+{% endif %}
+
+{% block contenu %}{% endblock %}
+</body>
+</html>
